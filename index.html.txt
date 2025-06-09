@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Prédiction Revenu Adult</title>
+</head>
+<body>
+    <h1>Prédiction du revenu (>50K ou <=50K)</h1>
+    <form method="POST">
+        {% for feat in ['age', 'workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'gender', 'capital-gain', 'capital-loss', 'hours-per-week', 'native-country'] %}
+            <label for="{{ feat }}">{{ feat }}:</label>
+            <input type="text" id="{{ feat }}" name="{{ feat }}" required><br><br>
+        {% endfor %}
+        <button type="submit">Prédire</button>
+    </form>
+
+    {% if resultat %}
+        <h2>Résultat : {{ resultat }}</h2>
+    {% endif %}
+</body>
+</html>

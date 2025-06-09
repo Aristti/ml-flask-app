@@ -1,0 +1,128 @@
+/* Fonds et vidéo */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -2;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 15, 30, 0.8); /* Bleu foncé translucide */
+    z-index: -1;
+}
+
+/* Bandeau défilant */
+.marquee {
+    background: #142850;
+    padding: 10px 0;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Conteneur principal */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 100px auto 50px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+/* Titre */
+.container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #F8EDEB;
+}
+
+/* Formulaire */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f3f3f3;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #000000;
+    outline: none;
+}
+
+input:focus, select:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Bouton prédire */
+button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #92fe9d;
+}
+
+/* Résultat */
+.result {
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    color: #FFD700;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

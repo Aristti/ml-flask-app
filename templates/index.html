@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prédiction du Revenu </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Vidéo de fond -->
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='video/money.mp4') }}" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+
+    <!-- Overlay bleu foncé -->
+    <div class="overlay"></div>
+
+    <!-- Bandeau défilant -->
+    <div class="marquee">
+        <span>Bienvenue sur la page de prédiction de revenu !</span>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Prédiction du revenu (>50K ou <=50K)</h1>
+        <form method="POST">
+            {% for feat in features %}
+                <div class="form-group">
+                    <label for="{{ feat }}">{{ feat }}:</label>
+                    {% if feat in category_options %}
+                        <select id="{{ feat }}" name="{{ feat }}" required>
+                            <option value="">-- Sélectionnez --</option>
+                            {% for option in category_options[feat] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        <input type="number" id="{{ feat }}" name="{{ feat }}" step="any" required>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">✨ Prédire ✨</button>
+        </form>
+
+        {% if resultat %}
+            <div class="result">
+                <h2>Résultat : {{ resultat }}</h2>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Script pour ralentir la vidéo -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const video = document.getElementById("bg-video");
+            video.playbackRate = 0.5; // ralentir à 50%
+        });
+    </script>
+
+</body>
+</html>
